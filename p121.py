@@ -18,11 +18,12 @@ while(capture.isOpened()):
     img=np.flip(img,axis=1)
     
     hsv=cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
-    lowerblack=np.array([104,153,70])
-    upperblack=np.array([30,30,0])
+    lowerblack=np.array([0,0,0])
+    upperblack=np.array([179,50,100])
     mask1=cv2.inRange(hsv,lowerblack,upperblack)
-    lowerblack=np.array([104,153,70])
-    upperblack=np.array([30,30,0])
+    
+    lowerblack=np.array([100,40,140])
+    upperblack=np.array([140,160,255])
     mask2=cv2.inRange(hsv,lowerblack,upperblack)
     mask1+=mask2
     mask1=cv2.morphologyEx(mask1,cv2.MORPH_OPEN,np.ones((3,3),np.uint8))
